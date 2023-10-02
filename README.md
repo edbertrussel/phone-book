@@ -25,4 +25,4 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### Link to nelify website: https://edbert-phonebook.netlify.app/
+### Link to netlify website: https://edbert-phonebook.netlify.app/
