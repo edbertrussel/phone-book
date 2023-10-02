@@ -8,7 +8,7 @@ import './EditContactForm.css';
 export const EditContactForm: React.FC = () => {
   const { id } = useParams();
   const idAsNumber = id ? parseInt(id, 10) : undefined;
-  const { data, loading, error } = useContactInfo(idAsNumber);
+  const { data } = useContactInfo(idAsNumber);
   const { handleEditContact } = useEditContact();
 
 

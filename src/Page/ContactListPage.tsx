@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useContactList } from "../hooks/useContactList";
 import './ContactListPage.css'; 
 import { useDeleteContact } from '../mutation/useDeleteContact';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 interface Contact {
   id: number | undefined;
@@ -17,7 +17,7 @@ export default function ContactListPage() {
     const [contacts, setContacts] = useState<Contact[]>([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [searchTerm, setSearchTerm] = useState<string>('');
-    const {error, loading, data} = useContactList();
+    const {error, data} = useContactList();
 
     const navigate = useNavigate();
 
