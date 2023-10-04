@@ -159,23 +159,3 @@ h1 {
     margin: 2% 0.5% 2% 0.5%;
   }
 }
-
-@media screen and (max-width: 480px) {
-  .padding-global {
-    padding-left: 3%;
-    padding-right: 3%;
-  }
-  h1 {
-    font-size: 30px;
-  }
-  .searchButton-container {
-    padding: 10px;
-  }
-  .addContact-button button {
-    padding: 8px 16px;
-    font-size: 12px;
-  }
-  .error-message {
-    margin-top: 5px;
-  }
-}
