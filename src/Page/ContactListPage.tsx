@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useContactList } from "../hooks/useContactList";
-import './ContactListPage.css'; 
+import './css/ContactListPage.css'; 
 import { useDeleteContact } from '../mutation/useDeleteContact';
 import { useNavigate } from 'react-router-dom';
 
@@ -62,81 +62,95 @@ export default function ContactListPage() {
     const numbers = [...Array(nPage + 1).keys()].slice(1);
 
     return (
-      <div className="contact-list-page">
-        <div className='search-button-container'>
-          
-          <div className="search-bar">
-            <input
-              type="text"
-              placeholder="Search By Name"
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
+      <div className="page-wrapper">
+        <div className='container-large'>
+          <div className='padding-global'>
+            <div className='header-section'>
+              <h1>PhoneBook</h1>
+            </div>
           </div>
 
-          <div className="add-contact-button">
-            <button onClick={() => navigate(`/add-contact`)}>Add Contacts</button>
+          <div className='searchButton-section'>
+            <div className='padding-global'>
+              <div className='searchButton-container'>
+                <div className='searchBar'>
+                  <input
+                    type="text"
+                    placeholder="Search By Name"
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                  />
+                </div>
+                <div className="addContact-button">
+                  <button onClick={() => navigate(`/add-contact`)}>Add Contacts</button>
+                </div>
+              </div>
+            </div>
           </div>
-        
-        </div>
 
-        {error && (
-          <div className="error-message">
-            Error: {error.message}
-          </div>
-        )}
-  
-        <table className="contact-table">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>First Name</th>
-              <th>Last Name</th>
-              <th>Phone Numbers</th>
-              <th></th>
-              <th></th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            {records.map((contact) => (
-              <tr key={contact.id}>
-                <td>{contact.id}</td>
-                <td>{contact.first_name}</td>
-                <td>{contact.last_name}</td>
-                <td>
-                  <ul>
-                    {contact.phones.map((phone, phoneIndex) => (
-                      <li key={phoneIndex}>{phone.number}</li>
+          {error && (
+            <div className="error-message">
+              Error: {error.message}
+            </div>
+          )}
+
+          <div className='contactTable-section'>
+            <div className='padding-global'>
+              <div className='contactList-container'>
+                <table className="contactList-table">
+                  <thead>
+                    <tr>
+                      <th>First Name</th>
+                      <th>Last Name</th>
+                      <th>Phone Numbers</th>
+                      <th></th>
+                      <th></th>
+                      <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {records.map((contact) => (
+                      <tr key={contact.id}>
+                        <td>{contact.first_name}</td>
+                        <td>{contact.last_name}</td>
+                        <td>
+                          <ul>
+                            {contact.phones.map((phone, phoneIndex) => (
+                              <li key={phoneIndex}>{phone.number}</li>
+                            ))}
+                          </ul>
+                        </td>
+                        <td>
+                          <button className='edit-button' onClick={() => navigate(`/${contact.id}`)}>Edit</button>
+                        </td>
+                        <td>
+                          <button className='delete-button' onClick={() => handleDelete(contact.id)}>Delete</button>
+                        </td>
+                        <td>
+                          <button className='favorite-button' onClick={() => toggleFavorite(contact.id)}>
+                            {contact.isFavorite ? '★' : '☆'}
+                          </button>
+                        </td>
+                      </tr>
                     ))}
-                  </ul>
-                </td>
-                <td>
-                  <button onClick={() => toggleFavorite(contact.id)}>
-                    {contact.isFavorite ? 'Unfavorite' : 'Favorite'}
-                  </button>
-                </td>
-                <td>
-                  <button onClick={() => navigate(`/${contact.id}`)}>Edit</button>
-                </td>
-                <td>
-                  <button onClick={() => handleDelete(contact.id)}>Delete</button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-  
-        <div className="pagination">
-          {numbers.map((number) => (
-            <button
-              key={number}
-              onClick={() => handlePageChange(number)}
-              className={number === currentPage ? "active" : ""}
-            >
-              {number}
-            </button>
-          ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <div className='padding-global'>
+            <div className='pagination-container'>
+              <div className="pagination">
+                {numbers.map((number) => (
+                <button key={number}
+                  onClick={() => handlePageChange(number)}
+                  className={number === currentPage ? "active" : ""}> {number}
+                </button>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     );

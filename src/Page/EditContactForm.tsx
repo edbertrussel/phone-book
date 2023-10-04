@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useEditContact } from '../mutation/useEditContact';
 import { useContactInfo } from '../hooks/useContactInfo';
-import './EditContactForm.css';  
+import './css/EditContactForm.css';  
 
 
 export const EditContactForm: React.FC = () => {
@@ -45,28 +45,32 @@ export const EditContactForm: React.FC = () => {
   
 
   return (
-    <div className="edit-contact-form">
-      <h2>Edit Contact</h2>
-      <div className="form-field">
-        <label>First Name:</label>
-        <input
-          type="text"
-          value={firstName}
-          onChange={(e) => setFirstName(e.target.value)}
-          
-        />
-      </div>
-      <div className="form-field">
-        <label>Last Name:</label>
-        <input
-          type="text"
-          value={lastName}
-          onChange={(e) => setLastName(e.target.value)}
+    
+    <div className="page-wrapper">
+      <div className='padding-global'>
+        <div className='editForm-container'>
+          <div className='editFormInside-container'>
+            <h2>Edit Contact</h2>
 
-        />
+            <div className="form-label">
+              <label>First Name:</label>
+            </div>
+
+            <input type="text" value={firstName} onChange={(e) => setFirstName(e.target.value)}/>
+
+            <div className="form-label">
+              <label>Last Name:</label>
+            </div>
+
+            <input type="text" value={lastName} onChange={(e) => setLastName(e.target.value)}/>
+
+            <div className='buttons-container'>
+              <button  onClick={() => navigate("/")} className='back-button'>Back</button>
+              <button className='save-button' onClick={handleSaveChanges}>Save</button>
+            </div>
+          </div>
+        </div>
       </div>
-      <button onClick={handleSaveChanges}>Save Changes</button>
-      <button onClick={() => navigate("/")} className='button-back'>Back</button>
     </div>
   );
 };

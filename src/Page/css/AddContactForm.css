@@ -1,0 +1,118 @@
+.padding-global {
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+.addForm-container {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-family: 'Helvetica', 'Arial', sans-serif;
+}
+
+.formInside-container {
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-bottom: 3%;
+}
+
+h2 {
+  text-align: center;
+  color: #333;
+}
+
+.addForm-label {
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #333;
+  margin-top: 5%;
+}
+
+.twoInput-field {
+  width: 95%;
+  padding: 10px;
+  border-radius: 3px;
+  background-color: #fff;
+  font-size: 14px;
+  color: #333;
+  border: 1px solid #ccc;
+}
+
+.phone-container {
+  display: flex;
+}
+
+.oneInput-field {
+  width: 80%;
+  margin-right: 5%;
+}
+
+.addPhone-button {
+  background-color: #28A745;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.addPhone-button:hover {
+  background-color: #1e7e34;
+}
+
+.list-container {
+  text-align: center;
+  background-color: #fff;
+  color: #333;
+  border-radius: 4px;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.list-number {
+  padding: 0;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  list-style: none;
+}
+
+.buttonss-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.backs-button {
+  width: 20%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 3%;
+}
+
+.backs-button:hover {
+  background-color: #0056b3;
+}
+
+.adds-button {
+  width: 30%;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 3%;
+}
+
+.adds-button:hover {
+  background-color: #0056b3;
+}
+
+  

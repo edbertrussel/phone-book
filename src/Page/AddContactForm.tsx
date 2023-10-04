@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useAddContact } from '../mutation/useAddContact';
 import { useNavigate } from 'react-router-dom';
-import './AddContactForm.css';  
+import './css/AddContactForm.css';  
 
 export default function AddContactForm() {
   const { handleAddContact } = useAddContact(); 
@@ -67,56 +67,52 @@ export default function AddContactForm() {
 };
 
 return (
-  <div className="add-contact-container">
-    <h2>Add New Contact</h2>
-    <form className="add-contact-form" onSubmit={HandleFormSubmit}>
-      <label>
-        First Name:
-        <input
-          className="input-field"
-          type="text"
-          value={firstName}
-          onChange={(e) => setFirstName(e.target.value)}
-        />
-      </label>
-      <br />
-      <label>
-        Last Name:
-        <input
-          className="input-field"
-          type="text"
-          value={lastName}
-          onChange={(e) => setLastName(e.target.value)}
-        />
-      </label>
-      <br />
-      <label className="phone-input">
-        Phone Number:
-        <input
-          className="input-field"
-          type="text"
-          value={phone}
-          onChange={(e) => {
+  <div className="page-wrapper">
+    <div className='padding-global'>
+      <div className='addForm-container'>
+        <h2>Add New Contact</h2>
+        <form className='formInside-container' onSubmit={HandleFormSubmit}>
+
+          <div className='addForm-label'>
+            <label>First Name:</label>
+          </div>
+
+          <input className="twoInput-field" type="text" value={firstName} onChange={(e) => setFirstName(e.target.value)}/>
+
+          <div className='addForm-label'>
+            <label>Last Name:</label>
+          </div>
+
+          <input className="twoInput-field" type="text" value={lastName} onChange={(e) => setLastName(e.target.value)}/>
+
+          <div className='addForm-label'>
+            <label>Phone Number:</label>
+          </div>
+
+          <div className='phone-container'>
+            <input className="oneInput-field" type="text" value={phone}
+            onChange={(e) => {
             const inputValue = e.target.value;
             if (inputValue.match(numericRegex) || inputValue === '') {
               setPhone(inputValue);
-            }
-          }}
-        />
-        <button type="button" className="add-phone-button" onClick={handlePhoneAdd}>
-          +
-        </button>
-      </label>
-      <ul className='list-number'>
-        {phones.map((p, index) => (
-          <li key={index}>{p.number}</li>
-        ))}
-      </ul>
-      <button type="submit" className="submit-button">Add Contact</button>
-    </form>
+            }}}/>
 
-    <div className="go-back-button">
-      <button onClick={() => navigate("/")}>Go back</button>
+            <button type="button" className="addPhone-button" onClick={handlePhoneAdd}>Add</button>
+          </div>
+
+          <div className='list-container'>
+            <ul className='list-number'>Phone List:
+              {phones.map((p, index) => (<li key={index}>- {p.number}</li>))}
+            </ul>
+          </div>
+
+          <div className="buttonss-container">
+            <button className='backs-button' onClick={() => navigate("/")}>Back</button>
+            <button type="submit" className="adds-button">Add Contact</button>
+          </div>
+
+        </form>
+      </div>
     </div>
   </div>
 );
