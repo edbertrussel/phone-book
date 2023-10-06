@@ -1,6 +1,8 @@
 import {gql, useMutation} from '@apollo/client'
 import { GET_CONTACTS } from '../hooks/useContactList';
 
+//this is the mutation to edit and update the phone numbers
+//but it does not work
 const ADD_PHONE = gql`
 mutation EditPhoneNumber($pk_columns: phone_pk_columns_input!, $new_phone_number:String!) {
     update_phone_by_pk(pk_columns: $pk_columns, _set: {number: $new_phone_number}) {

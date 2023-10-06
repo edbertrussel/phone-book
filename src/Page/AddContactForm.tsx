@@ -12,9 +12,11 @@ export default function AddContactForm() {
 
   const navigate = useNavigate();
 
+  //conditions to not allow special characters(first and last names) and to only allow numbers (phone numbers)
   const numericRegex = /^[0-9]*$/;
   const alphanumericRegex = /^[a-zA-Z0-9]*$/;
 
+  //add the phone number to the list of phone numbers
   const handlePhoneAdd = () => {
     if (phone) {
       if (phone.match(numericRegex))
@@ -27,6 +29,7 @@ export default function AddContactForm() {
     }
   };
 
+  //add the first and last names and phone numbers to the graphql
   const HandleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -41,13 +44,12 @@ export default function AddContactForm() {
     }
     
     try {
-      // Call the handleAddContact function to add the contact
+      //call the handleAddContact function to add the contact to the graphql
       const result = await handleAddContact(firstName, lastName, phones);
 
-      // Handle the result, e.g., show a success message or reset the form
       console.log('Contact added:', result);
       
-      // Reset the form
+      //reset the form
       setFirstName('');
       setLastName('');
       setPhones([]);
@@ -55,7 +57,7 @@ export default function AddContactForm() {
       navigate("/");
 
     } catch (error) {
-      // Handle any errors, e.g., show an error message
+      // Handle any errors
       console.error('Error adding contact:', error);
 
       alert("Please enter another phone number!");

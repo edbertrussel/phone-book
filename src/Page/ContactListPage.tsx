@@ -21,6 +21,7 @@ export default function ContactListPage() {
 
     const navigate = useNavigate();
 
+    //retrieve and set the data from the graphql
     useEffect(() => {
       if (data) {
         setContacts(data.contact);
@@ -28,15 +29,18 @@ export default function ContactListPage() {
       }
     }, [data]);
 
+    //keep track the page number
     const handlePageChange = (page: React.SetStateAction<number>) => {
       setCurrentPage(page);
   };
 
+    //return the contacts based on the search keyword
     const filteredContacts = contacts.filter((contact) => {
       const fullName = `${contact.first_name} ${contact.last_name}`;
       return fullName.toLowerCase().includes(searchTerm.toLowerCase());
     });
 
+    //keep track and set the favorite contacts
     const toggleFavorite = (id: number | undefined) => {
       const updatedContacts = contacts.map((contact) => {
         if (contact.id === id) {
@@ -47,6 +51,7 @@ export default function ContactListPage() {
       setContacts(updatedContacts);
     };
     
+    //display the favorite contacts on top
     const sortedContacts = [
       ...filteredContacts.filter((contact) => contact.isFavorite),
       ...filteredContacts.filter((contact) => !contact.isFavorite),
@@ -54,6 +59,7 @@ export default function ContactListPage() {
 
     const { handleDelete } = useDeleteContact();
 
+    //pagination logic
     const recordsPerPage = 10;
     const firstIndex = (currentPage - 1) * recordsPerPage;
     const lastIndex = firstIndex + recordsPerPage;

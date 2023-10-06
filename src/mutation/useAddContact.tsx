@@ -1,6 +1,7 @@
 import {gql, useMutation} from '@apollo/client'
 import { GET_CONTACTS } from '../hooks/useContactList';
 
+//use the mutation provided to add new contacts
 const ADD_CONTACTINFO = gql`
 mutation AddContactWithPhones(
     $first_name: String!, 
@@ -27,12 +28,14 @@ mutation AddContactWithPhones(
   }
 }
 `
+//add a new contact info that contains first and last name and multiple phone numbers
 export const useAddContact  = () => {
     const [addContact] = useMutation(ADD_CONTACTINFO);
 
     const handleAddContact = (firstName: string, lastName: string, phones: Array<{number: string}>) => {
         return addContact({
           variables: { first_name: firstName, last_name: lastName, phones },
+          //re query the data of contacts for update
           refetchQueries: [{ query: GET_CONTACTS}],
         });
       };

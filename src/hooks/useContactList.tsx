@@ -1,5 +1,6 @@
 import {useQuery, gql} from '@apollo/client'
 
+//use the query provided to get the contacts data
 export const GET_CONTACTS = gql`
 query GetContactList (
   $distinct_on: [contact_select_column!], 
@@ -25,7 +26,6 @@ contact(
 }
 }
 `
-
 export const useContactList = () => {
     const {error, data, loading} = useQuery(GET_CONTACTS);
 

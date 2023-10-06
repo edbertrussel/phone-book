@@ -1,6 +1,8 @@
 import { gql, useMutation } from '@apollo/client';
 import { GET_CONTACTS } from '../hooks/useContactList';
 
+//use the mutation provided to edit and update the contact's first and last name
+//having issues on edit and update for the phone numbers
 const EDIT_CONTACT = gql`
   mutation EditContactById($id: Int!, $_set: contact_set_input) {
     update_contact_by_pk(pk_columns: {id: $id}, _set: $_set) {
@@ -26,6 +28,7 @@ export const useEditContact = () => {
   const handleEditContact = (input: ContactInput) => {
     return editContact({
       variables: input,
+      //re query for update
       refetchQueries: [{ query: GET_CONTACTS }],
     });
   };

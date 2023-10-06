@@ -7,16 +7,18 @@ import './css/EditContactForm.css';
 
 export const EditContactForm: React.FC = () => {
   const { id } = useParams();
+  //obtain the contact id to be edited
   const idAsNumber = id ? parseInt(id, 10) : undefined;
   const { data } = useContactInfo(idAsNumber);
-  const { handleEditContact } = useEditContact();
 
+  const { handleEditContact } = useEditContact();
 
   const navigate = useNavigate();
 
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
 
+  //store the selected contact data to be edited
   useEffect(() => {
     if (data) {
       setFirstName(data.contact_by_pk.first_name || '');
@@ -24,6 +26,9 @@ export const EditContactForm: React.FC = () => {
     }
   }, [data]);
 
+  //update the graphql based on the data edited
+  //only first name and last name can be edited. 
+  //Having issues editing the phone number
   const handleSaveChanges = async () => {
     try {
       const contactInput = {

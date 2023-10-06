@@ -1,5 +1,6 @@
 import {useQuery, gql} from '@apollo/client'
 
+//use the query provided to return the contact info based on the id
 const GET_CONTACTINFO = gql`
 query GetContactInfo($id: Int!){
     contact_by_pk(id: $id) {
